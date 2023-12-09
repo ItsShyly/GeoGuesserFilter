@@ -1,6 +1,5 @@
 <template>
 
-    <div id="popover" popover>
         <div class="grid_wrapper">
             <div class="checkbox-wrapper box different-shadow">
                 <input type="checkbox" id="roadOption1" value="S-Yellow + M-White">
@@ -114,9 +113,6 @@
                 </label>
             </div>
         </div>
-    </div>
-    <button popovertarget="popover">Road markings</button>
-
 
 </template>
 

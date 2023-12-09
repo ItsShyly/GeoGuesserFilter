@@ -11,6 +11,7 @@ import ResultBox from './components/ResultBox.vue'
 </script>
 
 <template>
+    <RouterView/>
       <div class="container-wrapper">
           <div class="container-left">
               <div title="Which driving direction?" class="filter-box">
