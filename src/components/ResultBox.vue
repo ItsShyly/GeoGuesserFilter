@@ -12,43 +12,56 @@
 </template>
 
 <script>
-import {countriesList, filterState  } from '../assets/js/countriesData.js'
+  import { countriesList, filterState } from '@/assets/js/countriesData'
+  import CountryStore from "@/assets/js/countryStore";
 
-export default {
-  data() {
-    return {
-      filter: filterState,
-      countries: countriesList,
-    };
-  },
-  computed: {
-    filteredCountries() {
-      return this.countries.filter((country) => {
-        const directionMatch = (!this.filter.left || country.direction === 'Left') && (!this.filter.right || country.direction === 'Right');
-        const continentMatch =
-          (!this.filter.europe || country.continent === 'Europe') &&
-          (!this.filter.africa || country.continent === 'Africa') &&
-          (!this.filter.asia || country.continent === 'Asia') &&
-          (!this.filter.australia || country.continent === 'Australia') &&
-          (!this.filter.na || country.continent === 'na') &&
-          (!this.filter.sa || country.continent === 'sa') &&
-          (!this.filter.antarctica || country.continent === 'Antarctica');
+  export default {
+    props: {
+      worldMapRef: Object,
+    },
+    data() {
+      return {
+        filter: filterState,
+        countries: countriesList,
+      };
+    },
+    computed: {
+      filteredCountries() {
+        return this.countries.filter((country) => {
+          const directionMatch = (!this.filter.left || country.direction === 'Left') && (!this.filter.right || country.direction === 'Right');
+          const continentMatch =
+            (!this.filter.europe || country.continent === 'Europe') &&
+            (!this.filter.africa || country.continent === 'Africa') &&
+            (!this.filter.asia || country.continent === 'Asia') &&
+            (!this.filter.australia || country.continent === 'Australia') &&
+            (!this.filter.na || country.continent === 'na') &&
+            (!this.filter.sa || country.continent === 'sa') &&
+            (!this.filter.antarctica || country.continent === 'Antarctica');
 
-        const yearMatch = !this.filter.years.length || this.filter.years.every(year => country.years.includes(year));
-        const roadmarksMatch = !this.filter.roadmarks.length || this.filter.roadmarks.every(r => country.roadmarks.includes(r));
+          const yearMatch = !this.filter.years.length || this.filter.years.every(year => country.years.includes(year));
+          const roadmarksMatch = !this.filter.roadmarks.length || this.filter.roadmarks.every(r => country.roadmarks.includes(r));
 
-        return directionMatch && continentMatch && yearMatch && roadmarksMatch;
-      });
+          return directionMatch && continentMatch && yearMatch && roadmarksMatch;
+        });
+      },
     },
 
+    watch: {
+      filteredCountries(newCountries, oldCountries) {
+        // Remove old countries from the CountryStore
+        oldCountries.forEach((country) => {
+          CountryStore.removeCountry(country.name);
+        });
 
-
-  },
-};
-
+        // Add new countries to the CountryStore
+        newCountries.forEach((country) => {
+          CountryStore.addCountry(country.name);
+        });
+      },
+    },
+  };
 </script>
 
-
 <style>
-
+    /* Your styles go here */
 </style>

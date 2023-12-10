@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import { filterState } from '../../assets/js/countriesData.js';
+  import { filterState } from '@/assets/js/countriesData';
 
   export default {
     data() {

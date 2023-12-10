@@ -18,8 +18,8 @@
 
 
 <script>
-  import { handleCheckboxChange } from '../../assets/js/handleCheckbox'
-  import { filterState } from '../../assets/js/countriesData.js'
+  import { handleCheckboxChange } from '@/assets/js/handleCheckbox'
+  import { filterState } from '@/assets/js/countriesData'
 
   export default {
     data() {

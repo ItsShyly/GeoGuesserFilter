@@ -1,41 +1,44 @@
 <script setup>
-//filter
-import ContinentFilter from './components/filter/ContinentFilter.vue'
-import DirectionFilter from './components/filter/DirectionFilter.vue'
-import RoadMarksFilter from './components/filter/RoadMarksFilter.vue'
-import YearsFilter from './components/filter/YearsFilter.vue'
+  // Import your components
+  import ContinentFilter from './components/filter/ContinentFilter.vue'
+  import DirectionFilter from './components/filter/DirectionFilter.vue'
+  import RoadMarksFilter from './components/filter/RoadMarksFilter.vue'
+  import YearsFilter from './components/filter/YearsFilter.vue'
+  import WorldMap from './components/WorldMap.vue'
+  import ResultBox from './components/ResultBox.vue'
 
-//results
-import ResultBox from './components/ResultBox.vue'
 
 </script>
 
 <template>
-      <div class="container-wrapper">
-          <div class="container-left">
-              <div title="Which driving direction?" class="filter-box">
-                  <DirectionFilter/>
-              </div>
-              <div title="Which continent?" class="filter-box">
-                  <ContinentFilter/>
-              </div>
-              <div title="What Roadmarks?" class="filter-box">
-                  <RoadMarksFilter/>
-              </div>
-              <div title="Which Google Years?" class="filter-box">
-                  <YearsFilter/>
-              </div>
-          </div>
-          <div class="container-right">
-              <div class="result-box">
-                  <ResultBox/>
-              </div>
-          </div>
-      </div>
+    <div>
+        <WorldMap ref="worldMapRef" />
+        <div class="container-wrapper">
+            <div class="container-left">
+                <div title="Which driving direction?" class="filter-box">
+                    <DirectionFilter />
+                </div>
+                <div title="Which continent?" class="filter-box">
+                    <ContinentFilter />
+                </div>
+                <div title="What Roadmarks?" class="filter-box">
+                    <RoadMarksFilter />
+                </div>
+                <div title="Which Google Years?" class="filter-box">
+                    <YearsFilter />
+                </div>
+            </div>
+            <div class="container-right">
+                <div class="result-box">
+                    <ResultBox :worldMapRef="worldMapRef" />
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
+    header {
+        line-height: 1.5;
+    }
 </style>
