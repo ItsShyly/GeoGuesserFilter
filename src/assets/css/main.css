@@ -103,3 +103,45 @@
     text-shadow: var(--shadow-category);
 }
 
+.floating-reset-btn{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 26%;
+    top: 20px;
+}
+
+.floating-reset button:active {
+    background: var(--btn-primary-selected);
+
+}
+
+.reset-btn-text {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.34);
+    font-size: 40px;
+
+}
+
+
+.floating-reset-btn button {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: var(--btn-primary);
+    border: solid 0;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+
+}
+@keyframes rotateAnimation {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotateAnimation 1s ease; /* Adjust the animation duration and easing as needed */
+}
+

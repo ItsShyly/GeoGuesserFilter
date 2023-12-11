@@ -1,16 +1,47 @@
 <script setup>
-  // Import your components
-  import ContinentFilter from './components/filter/ContinentFilter.vue'
-  import DirectionFilter from './components/filter/DirectionFilter.vue'
-  import RoadMarksFilter from './components/filter/RoadMarksFilter.vue'
-  import YearsFilter from './components/filter/YearsFilter.vue'
-  import WorldMap from './components/WorldMap.vue'
-  import ResultBox from './components/ResultBox.vue'
+  import ContinentFilter from './components/filter/ContinentFilter.vue';
+  import DirectionFilter from './components/filter/DirectionFilter.vue';
+  import RoadMarksFilter from './components/filter/RoadMarksFilter.vue';
+  import YearsFilter from './components/filter/YearsFilter.vue';
+  import WorldMap from './components/WorldMap.vue';
+  import ResultBox from './components/ResultBox.vue';
+</script>
 
+<script>
+  import { filterState } from '@/assets/js/countriesData';
 
+  export default {
+    data() {
+      return {
+        filter: filterState, // Use spread operator to create a copy of filterState
+        isRotated: false,
+      };
+    },
+    methods: {
+      resetButton() {
+        // Reset all properties of the filter object
+        Object.keys(this.filter).forEach(key => {
+          if (Array.isArray(this.filter[key])) {
+            this.filter[key] = [];
+          } else {
+            this.filter[key] = false;
+          }
+        });
+
+        // Rotation logic
+        this.isRotated = true;
+        setTimeout(() => {
+          this.isRotated = false;
+        }, 1200); // 1000 milliseconds = 1 second
+      },
+    },
+  };
 </script>
 
 <template>
+    <div class="floating-reset-btn" :class="{ 'rotate': isRotated }" @click="resetButton">
+        <button><span class="reset-btn-text">&#x21bb;</span></button>
+    </div>
     <div class="container-fh container_wrapper">
         <div class="container-fh container_left">
             <div class="container-fh container_split-vertical-50 r">
