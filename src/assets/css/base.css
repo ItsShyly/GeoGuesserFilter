@@ -1,41 +1,74 @@
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Rubik:wght@300;400;500&display=swap');
+
 :root {
-    /* Colors */
-    --text: #ffffff;
-    --background: #202342;
-    --primary: #262a4d;
-    --primary-light: #424988;
-    --secondary: #7033fd;
-    --accent: #4d7cfe;
+    --bg-main: #252A4A;
+    --bg-secondary: #202342;
+    --bg-accent: #2A315E;
+    --bg-tertiary: #33395F;
+
+    --btn-primary: #4A22A8;
+    --btn-primary-hover: #5e2dd3;
+    --btn-primary-selected: #44B9DE;
+    --btn-secondary: #421E96;
+    --btn-secondary-hover: #f1745e;
+    --btn-secondary-selected: #e74c3c;
+    --btn-excluded: #722017;
+    --btn-excluded-secondary: #246579;
+    --btn-primary-selected-hover: #6acfef;
+
+    --text-main: #ffffff;
+    --text-btn-primary: #311475;
+    --text-btn-primary-hover: #5e2fcc;
+    --text-btn-primary-selected: #298BA5;
+    --text-btn-primary-selected-hover: #279fcb;
+    --text-btn-secondary: #311475;
+    --text-btn-secondary-hover: #b44d3c;
+    --text-btn-secondary-selected: #9d2c20;
+    --text-btn-excluded: #591912;
+    --text-btn-excluded-hover: #9f372c;
+    --text-btn-excluded-secondary: #1a4d5d;
+    --text-btn-excluded-secondary-hover: #2c7991;
+
+    --blue: #44B9DE;
+    --dark-blue: #4A22A8;
+    --purple: #4944de;
+
+    --fs-main: 15px;
+    --fs-button: 20px;
+    --fs-category: 30px;
+    --shadow-category:  0 0 20px rgba(255, 255, 255, 0.56);
+    --shadow-stripe:  0 0 20px rgba(255, 254, 254, 0.56);
+
+    --font: 'Rubik', sans-serif;
 
 }
 
 body {
-  color: white;
-  background: var(--background);
+  color: var(--text-main);
+  background: var(--bg-main);
   transition:
       color 0.5s,
       background-color 0.5s;
   line-height: 1.6;
-  font-family:
-      Inter,
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      sans-serif;
-  font-size: 15px;
+    font-family: 'Rubik', sans-serif;
+  font-size: var(--fs-main);
+    font-weight: 400;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
 }
 
+
+#app {
+  margin: 0 auto;
+  font-weight: normal;
+}
+
+header {
+    line-height: 1.5;
+}
 
 *,
 *::before,
@@ -45,35 +78,111 @@ body {
     font-weight: normal;
 }
 
-#app {
-  margin: 0 auto;
-  font-weight: normal;
-}
-
-.container-wrapper {
-  display: flex;
-}
-
-
-.container-left {
-    width: 70vw;
+.container-fh {
     height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    justify-content: center;
-    align-items: center;
-    gap: 4% 3% ;
-    justify-items: center;
-    padding: 2%;
+}
+
+.container-fw {
+    width: 100%;
+}
+
+.container_wrapper {
+
+    width: 100vw;
+    display: flex;
+}
+
+.container_left {
+
+    width: 25vw;
+    display: flex;
+}
+.container_mid{
+
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
+.container_right {
+
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_split-vertical-50 {
+
+    width: 50%;
 
 }
 
-.container-right {
-  background: 0;
-  width: 30vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.container_split-horizontal-30 {
+
+    height: 30%;
+
+}
+
+.container_split-horizontal-70 {
+
+    height: 70%;
+
+}
+
+
+.container_split-horizontal-60 {
+
+    height: 60%;
+
+}
+
+.container_split-horizontal-40 {
+
+    height: 40%;
+
+}
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--bg-accent);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bg-tertiary);
+}
+
+/* Handle on hover */
+.yellow {
+    background-color: #f3f33a;
+}
+
+.white {
+    background-color: white;
+}
+
+.blue {
+    background-color: #008cff;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.green {
+    background-color: #6cff6c;
+}
+
+.red {
+    background-color: #ff3737;
 }

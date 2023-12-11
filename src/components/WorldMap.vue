@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-box-floating">
         <div id="main-app"></div>
     </div>
 </template>
@@ -35,18 +35,25 @@
         this.polygonSeries = this.map.series.push(new am4maps.MapPolygonSeries());
         this.polygonSeries.useGeodata = true;
 
+        this.map.chartContainer.wheelable = false;
+        this.map.seriesContainer.draggable = false;
+        this.map.seriesContainer.resizable = false;
+        this.map.maxZoomLevel = 1;
+        this.map.seriesContainer.events.disableType("doublehit");
+        this.map.chartContainer.events.disableType("doublehit");
+
         const polygonTemplate = this.polygonSeries.mapPolygons.template;
         polygonTemplate.tooltipText = "{name}";
-        polygonTemplate.fill = am4core.color("#4f7e35");
+        polygonTemplate.fill = am4core.color("#311475");
 
         const hs = polygonTemplate.states.create("hover");
-        hs.properties.fill = am4core.color("#3e83ea");
+        hs.properties.fill = am4core.color("#313cb0");
 
         const activeState = polygonTemplate.states.create("active");
-        activeState.properties.fill = am4core.color("#861414");
+        activeState.properties.fill = am4core.color("#44B9DE");
 
         this.polygonSeries.exclude = ["AQ"];
-
+        this.polygonSeries.maxZoomLevel = 1;
         polygonTemplate.events.on("hit", (ev) => {
           const data = ev.target.dataItem.dataContext;
           this.selectedCountry = data.name;
@@ -88,9 +95,9 @@
 <style>
     #main-app {
         margin: auto;
-        width: 75%;
-        height: 400px;
+        width: 90%;
+        height: 90%;
         text-align: center;
-        background-color: rgba(255, 255, 255, 0.07);
+
     }
 </style>

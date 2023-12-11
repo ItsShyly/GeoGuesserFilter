@@ -1,24 +1,27 @@
 <!-- Direction.vue -->
 <template>
-    <div class="inner-splitter ">
+<div class="container-box-full border-top">
+    <p class="category-title padding-20">Driving Direction</p>
+    <div class="container-box-full container-split">
         <div class="inner-left">
-            <div class="checkbox-wrapper-extra extra-left">
-                <input type="checkbox" v-model="filter.left" id="left" @change="handleCheckboxChangeEvent('left')" />
+            <div class="checkbox-wrapper checkbox-box">
+                <input type="checkbox" v-model="filter.left" id="left" @change="handleCheckboxChange('left')" />
                 <label for="left">Left</label>
             </div>
         </div>
         <div class="inner-right dot-splitter">
-            <div class="checkbox-wrapper-extra extra-right">
-                <input type="checkbox" v-model="filter.right" id="right" @change="handleCheckboxChangeEvent('right')" />
+            <div class="checkbox-wrapper checkbox-box">
+                <input type="checkbox" v-model="filter.right" id="right" @change="handleCheckboxChange('right')" />
                 <label for="right">Right</label>
             </div>
         </div>
     </div>
+</div>
 </template>
 
 
 <script>
-  import { handleCheckboxChange } from '@/assets/js/handleCheckbox'
+
   import { filterState } from '@/assets/js/countriesData'
 
   export default {
@@ -28,10 +31,16 @@
       };
     },
     methods: {
-      handleCheckboxChangeEvent(event) {
-        const checkboxValue = event.target.value;
-        handleCheckboxChange.call(this, checkboxValue);
-      },
+      handleCheckboxChange(checkbox) {
+        // Handle direction checkboxes
+        if (checkbox === 'left' && this.filter.right) {
+          this.filter.right = false;
+        } else if (checkbox === 'right' && this.filter.left) {
+          this.filter.left = false;
+        }
+
+
+      }
     },
   };
 </script>

@@ -1,23 +1,13 @@
 <template>
-    <div class="inner-splitter ">
-        <div class="inner-left">
-            <div class="checkbox-wrapper" v-for="year in availableYears.slice(0, 7)" :key="year">
-                <input type="checkbox" v-model="filter.years" :value="year" :id="year" />
-                <label :for="year">{{ year }}</label>
-            </div>
-        </div>
-
-        <div class="inner-right">
-            <div class="checkbox-wrapper" v-for="year in availableYears.slice(7)" :key="year">
-                <input type="checkbox" v-model="filter.years" :value="year" :id="year" />
-                <label :for="year">{{ year }}</label>
-            </div>
-            <div class="checkbox-wrapper" style="visibility: hidden">
-                <input type="checkbox">
-                <label for="">invisible</label>
-            </div>
+<div class="container-box-full ">
+    <p class="category-title padding-40">Google Years</p>
+    <div class="list-flex-center height-100">
+        <div class="checkbox-wrapper checkbox-list" v-for="year in availableYears" :key="year">
+            <input  type="checkbox" v-model="filter.years" :value="year" :id="year" />
+            <label class="btn-list justify-center" :for="year">{{ year }}</label>
         </div>
     </div>
+</div>
 </template>
 
 <script>
