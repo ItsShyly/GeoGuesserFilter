@@ -1,15 +1,13 @@
 <template>
 <div class="container-box-floating dp-flex-center">
-
-        <h2 class="result-title category-title">Filtered Countries</h2>
-        <div class="scroll-box">
-            <ul class="list-flex-center">
-                <li class="list-style" v-for="country in filteredCountries" :key="country.name">
-                    {{ country.name }}
-                </li>
-            </ul>
-        </div>
-
+    <h2 class="result-title category-title">Filtered Countries</h2>
+    <div class="scroll-box">
+        <ul class="list-flex-center">
+            <li class="list-style" v-for="country in filteredCountries" :key="country.name">
+                {{ country.name }}
+            </li>
+        </ul>
+    </div>
 </div>
 </template>
 
@@ -26,6 +24,15 @@
         filter: filterState,
         countries: countriesList,
       };
+    },
+    mounted() {
+      this.sortCountries();
+    },
+    methods: {
+      sortCountries() {
+        // Sort countries by name
+        this.countries.sort((a, b) => a.name.localeCompare(b.name));
+      },
     },
     computed: {
       filteredCountries() {
@@ -60,6 +67,7 @@
 
 
     watch: {
+
       filteredCountries(newCountries, oldCountries) {
         // Remove old countries from the CountryStore
         oldCountries.forEach((country) => {
