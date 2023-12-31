@@ -29,7 +29,7 @@
                 <div class="stripe yellow"></div>
             </label>
         </div>
-        <div class="checkbox-wrapper checkbox-full-box">
+        <div class="checkbox-wrapper checkbox-full">
             <input type="checkbox" v-model="filter.roadmarks" id="roadOption4" value="S-White + M-White">
             <label for="roadOption4">
                 <div class="stripe white"></div>
